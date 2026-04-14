@@ -1,0 +1,1 @@
+# formule_hlasovani
