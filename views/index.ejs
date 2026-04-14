@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Anketa 2026</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>F1 Fanouškovská Anketa 2026</h1>
+        <form action="/vote" method="POST">
+            <label>Nejoblíbenější tým:</label>
+            <select name="team" required>
+                <option value="" disabled selected>Vyber oblíbený tým...</option>
+                <option value="Red Bull Racing">Oracle Red Bull Racing</option>
+                <option value="Ferrari">Scuderia Ferrari</option>
+                <option value="Mercedes-AMG">Mercedes-AMG Petronas</option>
+                <option value="McLaren">McLaren Formula 1 Team</option>
+                <option value="Aston Martin">Aston Martin Aramco</option>
+                <option value="Audi">Audi F1 Team</option>
+                <option value="Cadillac">Cadillac Andretti F1</option>
+                <option value="Williams">Williams Racing</option>
+                <option value="Alpine">Alpine F1 Team</option>
+                <option value="Haas">MoneyGram Haas F1 Team</option>
+                <option value="RB">Visa Cash App RB</option>
+            </select>
+
+            <label>Nejlepší jezdec (Grid 2026):</label>
+            <select name="driver" required>
+                <option value="" disabled selected>Vyberte oblíbeného jezdce...</option>
+                <optgroup label="Red Bull Racing">
+                    <option value="Max Verstappen">Max Verstappen</option>
+                    <option value="Isack Hadjar">Isack Hadjar</option>
+                </optgroup>
+                <optgroup label="Cadillac Andretti F1">
+                    <option value="Sergio Pérez">Sergio Pérez</option>
+                    <option value="Valtteri Bottas">Valtteri Bottas</option>
+                </optgroup>
+                <optgroup label="Visa Cash App RB">
+                    <option value="Liam Lawson">Liam Lawson</option>
+                    <option value="Arvid Lindblad">Arvid Lindblad</option>
+                </optgroup>
+                <optgroup label="Scuderia Ferrari">
+                    <option value="Lewis Hamilton">Lewis Hamilton</option>
+                    <option value="Charles Leclerc">Charles Leclerc</option>
+                </optgroup>
+                <optgroup label="McLaren">
+                    <option value="Lando Norris">Lando Norris</option>
+                    <option value="Oscar Piastri">Oscar Piastri</option>
+                </optgroup>
+                <optgroup label="Mercedes-AMG">
+                    <option value="George Russell">George Russell</option>
+                    <option value="Kimi Antonelli">Kimi Antonelli</option>
+                </optgroup>
+                <optgroup label="Audi F1 Team">
+                    <option value="Nico Hülkenberg">Nico Hülkenberg</option>
+                    <option value="Gabriel Bortoleto">Gabriel Bortoleto</option>
+                </optgroup>
+                <optgroup label="Williams Racing">
+                    <option value="Carlos Sainz">Carlos Sainz</option>
+                    <option value="Alex Albon">Alex Albon</option>
+                </optgroup>
+                <optgroup label="Alpine F1 Team">
+                    <option value="Pierre Gasly">Pierre Gasly</option>
+                    <option value="Franco Colapinto">Franco Colapinto</option>
+                </optgroup>
+                <optgroup label="Aston Martin">
+                    <option value="Fernando Alonso">Fernando Alonso</option>
+                    <option value="Lance Stroll">Lance Stroll</option>
+                </optgroup>
+                <optgroup label="Haas">
+                    <option value="Ollie Bearman">Ollie Bearman</option>
+                    <option value="Esteban Ocon">Esteban Ocon</option>
+                </optgroup>
+            </select>
+
+            <label>Váš komentář k aktuální sezóně:</label>
+            <textarea name="comment" rows="4" placeholder="Proč jste takto hlasovali?"></textarea>
+
+            <button type="submit">Odeslat hlas</button>
+        </form>
+        <a href="/results">Zobrazit výsledky a grafy</a>
+    </div>
+</body>
+</html>

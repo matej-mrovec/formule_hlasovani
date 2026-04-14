@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <title>F1 2026 - Výsledky</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Výsledky popularity 2026</h1>
+        
+        <div class="chart-container">
+            <canvas id="voteChart"></canvas>
+        </div>
+
+        <h2>Přehled všech hlasů</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Čas odeslání</th>
+                    <th>Tým</th>
+                    <th>Jezdec</th>
+                    <th>Komentář</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% responses.reverse().forEach(r => { %>
+                    <tr>
+                        <td><%= r.timestamp %></td>
+                        <td><strong><%= r.team %></strong></td>
+                        <td><%= r.driver %></td>
+                        <td><%= r.comment %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        
+        <a href="/">← Zpět k hlasování</a>
+    </div>
+
+    <script>
+        // Spuštění grafu
+        const ctx = document.getElementById('voteChart').getContext('2d');
+        const stats = JSON.parse('<%- JSON.stringify(stats) %>');
+
+        /**
+         * Definice barev pro týmy sezóny 2026
+         * Klíče musí přesně odpovídat hodnotám v <select> na hlavní stránce
+         */
+        const teamColors = {
+            "Red Bull Racing": "#003773",
+            "Ferrari": "#E80020",
+            "Mercedes-AMG": "#27F4D2",
+            "McLaren": "#FF8000",
+            "Aston Martin": "#229971",
+            "Audi": "#000000",
+            "Cadillac": "#FFD700",
+            "Williams": "#64C4FF",
+            "Alpine": "#DE637F",
+            "Haas": "#B6BABD",
+            "RB": "#6692FF"
+        };
+
+        // Příprava popisků a barev na základě reálných dat v databázi
+        const labels = Object.keys(stats);
+        const barColors = labels.map(teamName => teamColors[teamName] || '#e10600');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(stats),
+                datasets: [{
+                    label: 'Počet získaných hlasů',
+                    data: Object.values(stats),
+                    backgroundColor: barColors,
+                    borderColor: '#15151e',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: { 
+                    y: { 
+                        beginAtZero: true, 
+                        ticks: { stepSize: 1 } 
+                    } 
+                }
+            }
+        });
+    </script>
+</body>
+</html>
